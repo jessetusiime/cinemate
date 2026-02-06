@@ -15,11 +15,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/components.css">
-    <script type="module" src="js/app.mjs"></script>
+    <link rel="icon" href="images/favicon.ico">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
     
@@ -32,15 +29,14 @@
             <!-- Search Bar -->
             <div class="search-container">
                 <form id="searchForm" role="search">
-                    <input 
-                        type="search" 
-                        id="searchInput" 
-                        class="search-input" 
-                        placeholder="Search for movies..."
-                        aria-label="Search for movies"
-                        autocomplete="off"
-                    >
-                    <button type="submit" class="search-btn" aria-label="Search">🔍</button>
+                    <input type="search" id="searchInput" class="search-input" placeholder="Search for movies..."
+                        aria-label="Search for movies" autocomplete="off">
+                    <button type="submit" class="search-btn" aria-label="Search">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path
+                                d="M23.707,22.293l-5.969-5.969a10.016,10.016,0,1,0-1.414,1.414l5.969,5.969a1,1,0,0,0,1.414-1.414ZM10,18a8,8,0,1,1,8-8A8.009,8.009,0,0,1,10,18Z" />
+                        </svg>
+                    </button>
                 </form>
             </div>
 
