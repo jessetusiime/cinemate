@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cinemate - Discover, track, and organize your favorite movies">
+    <title>Cinemate - Movie Discovery & Tracking</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/components.css">
+    <script type="module" src="js/app.mjs"></script>
+</head>
+<body>
+    
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h2 class="hero-title">Discover Your Next Favorite Movie</h2>
+            <p class="hero-subtitle">Search, track, and organize movies you love</p>
+            
+            <!-- Search Bar -->
+            <div class="search-container">
+                <form id="searchForm" role="search">
+                    <input 
+                        type="search" 
+                        id="searchInput" 
+                        class="search-input" 
+                        placeholder="Search for movies..."
+                        aria-label="Search for movies"
+                        autocomplete="off"
+                    >
+                    <button type="submit" class="search-btn" aria-label="Search">🔍</button>
+                </form>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <select id="genreFilter" class="filter-select" aria-label="Genre filter">
+                    <option value="">All Genres</option>
+                </select>
+                <select id="yearFilter" class="filter-select" aria-label="Genre filter">
+                    <option value="">All Years</option>
+                </select>
+                <select id="sortFilter" class="filter-select" aria-label="Genre filter">
+                    <option value="popularity.desc">Most Popular</option>
+                    <option value="vote_average.desc">Highest Rated</option>
+                    <option value="release_date.desc">Newest</option>
+                </select>
+            </div>
+        </div>
+    </header>
+
+    <!-- Movies Section -->
+    <main class="main-content">
+        <div class="container">
+            <div id="loadingSpinner" class="loading-spinner hidden">
+                <div class="spinner"></div>
+                <p>Loading movies...</p>
+            </div>
+
+            <div id="errorMessage" class="error-message hidden"></div>
+
+            <section>
+                <h3 class="section-title">Featured Movies</h3>
+                <div id="moviesGrid" class="movies-grid"></div>
+                
+                <div class="pagination hidden" id="pagination">
+                    <button id="prevPage" class="btn-page">Previous</button>
+                    <span id="pageInfo" class="page-info"></span>
+                    <button id="nextPage" class="btn-page">Next</button>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Random Movie Modal -->
+    <div id="randomModal" class="modal hidden">
+        <div class="modal-content">
+            <button class="modal-close">&times;</button>
+            <h3 class="modal-title">🎲 Random Movie Selector</h3>
+            
+            <div class="modal-filters">
+                <label for="randomGenre">Genre:</label>
+                <select id="randomGenre" class="filter-select">
+                    <option value="">Any Genre</option>
+                </select>
+                
+                <label for="randomRating">Minimum Rating:</label>
+                <select id="randomRating" class="filter-select">
+                    <option value="0">Any Rating</option>
+                    <option value="7">7+</option>
+                    <option value="8">8+</option>
+                </select>
+            </div>
+            
+            <button id="getRandomMovie" class="btn-primary">Get Random Movie</button>
+            <div id="randomMovieResult" class="random-result hidden"></div>
+        </div>
+    </div>
+
+</body>
+</html>
