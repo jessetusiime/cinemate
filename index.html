@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en-US">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description"
         content="Discover and track movies, favorites, manage watchlists, and compare ratings from multiple sources">
+    <meta name="author" content="Tusiime Jesse">
     <meta property="og:description" content="Explore different movies and Tv shows">
     <meta property="og:image" content="https://jessetusiime.github.io/cinemate/images/meta_image.webp">
     <meta property="og:url" content="https://jessetusiime.github.io/cinemate/index.html">
@@ -14,21 +16,25 @@
     <title>Cinemate - Movie Discovery</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Merriweather:wght@300;400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Merriweather:wght@300;400&display=swap"
+        rel="stylesheet">
     <link rel="icon" href="images/favicon.ico">
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/components.css">
+    <link rel="stylesheet" href="styles/responsive.css">
+    <link rel="stylesheet" href="styles/animations.css">
     <script type="module" src="scripts/main.mjs"></script>
-    <script type="module" src="scripts/components.mjs"></script>
 </head>
+
 <body>
-    
+
     <!-- Hero Section -->
     <header class="hero">
         <div class="container">
             <h2 class="hero-title">Discover Your Next Favorite Movie</h2>
             <p class="hero-subtitle">Search, track, and organize movies you love</p>
-            
+
             <!-- Search Bar -->
             <div class="search-container">
                 <form id="searchForm" role="search">
@@ -73,7 +79,7 @@
             <section>
                 <h3 class="section-title">Featured Movies</h3>
                 <div id="moviesGrid" class="movies-grid"></div>
-                
+
                 <div class="pagination hidden" id="pagination">
                     <button id="prevPage" class="btn-page">Previous</button>
                     <span id="pageInfo" class="page-info"></span>
@@ -87,14 +93,14 @@
     <div id="randomModal" class="modal hidden">
         <div class="modal-content">
             <button class="modal-close">&times;</button>
-            <h3 class="modal-title">🎲 Random Movie Selector</h3>
-            
+            <h3 class="modal-title">Random Movie Selector</h3>
+
             <div class="modal-filters">
                 <label for="randomGenre">Genre:</label>
                 <select id="randomGenre" class="filter-select">
                     <option value="">Any Genre</option>
                 </select>
-                
+
                 <label for="randomRating">Minimum Rating:</label>
                 <select id="randomRating" class="filter-select">
                     <option value="0">Any Rating</option>
@@ -102,11 +108,12 @@
                     <option value="8">8+</option>
                 </select>
             </div>
-            
+
             <button id="getRandomMovie" class="btn-primary">Get Random Movie</button>
             <div id="randomMovieResult" class="random-result hidden"></div>
         </div>
     </div>
 
 </body>
+
 </html>

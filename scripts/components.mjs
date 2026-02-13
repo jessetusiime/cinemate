@@ -88,8 +88,9 @@ export function createFooter() {
                     </div>
                 </div>
                 <div class="footer-bottom">
-                    <p>&copy; ${currentYear} Cinemate. Built with  for movie lovers by Tusiime Jesse.</p>
-                </div>
+    <p>&copy; ${currentYear} Cinemate. Built by Tusiime Jesse for movie lovers.</p>
+    <p id="lastModified" class="last-modified"></p>
+</div>
             </div>
         </footer>
     `;
@@ -128,7 +129,7 @@ export function updateBadges(favoritesCount = 0, watchlistCount = 0) {
     }
 }
 
-// Update footer stats
+// Update footer statistics
 export function updateFooterStats(favoritesCount = 0, watchlistCount = 0) {
     const statsElement = document.getElementById('footerStats');
     if (statsElement) {
