@@ -252,7 +252,7 @@ export function setupSearchEvents() {
             } else {
                 moviesGrid.innerHTML = `
                     <div class="no-results">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">🎬</div>
+                        <div style="font-size: 3rem; margin-bottom: 1rem;"></div>
                         <h3 style="color: white; margin-bottom: 0.5rem;">No movies found for "${query}"</h3>
                         <p style="color: var(--text-secondary);">Try different keywords</p>
                     </div>

@@ -263,7 +263,7 @@ const UI = (function () {
                         <div class="details-poster-wrapper">
                             ${posterUrl
                 ? `<img src="${posterUrl}" alt="${movie.title}" class="details-poster" loading="lazy">`
-                : '<div class="details-poster no-image">🎬</div>'
+                : '<div class="details-poster no-image"></div>'
             }
                         </div>
                         <div class="details-info">
@@ -393,7 +393,7 @@ const UI = (function () {
                                        alt="${movie.title}" 
                                        loading="lazy"
                                        onerror="this.src='../images/no-poster.jpg'">`
-                        : '<div class="no-image-small">🎬</div>'
+                        : '<div class="no-image-small"></div>'
                     }
                             <div class="recommendation-info">
                                 <h4>${movie.title}</h4>
