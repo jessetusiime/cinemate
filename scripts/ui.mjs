@@ -306,7 +306,7 @@ const UI = (function () {
             ${castHTML}
             ${trailerHTML}
             
-            <!-- Placeholder for recommendations - we'll load these separately -->
+            <!-- Placeholder for recommendations -->
             <div id="recommendationsSection" class="recommendations-section"></div>
         </div>
     `;

@@ -87,11 +87,7 @@
 
     .filter-select {
         width: 100%;
-        max-width: 100vw;
-    }
-
-    select {
-        max-width: 100vw;
+        max-width: 100%;
     }
 
     .movies-grid {
@@ -138,50 +134,138 @@
 
     .details-hero {
         min-height: auto;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .details-overlay {
+        position: relative;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.8));
+        padding: 2rem 0;
     }
 
     .details-content {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
         text-align: center;
-        gap: var(--spacing-lg);
     }
 
     .details-poster-wrapper {
-        max-width: 250px;
+        max-width: 200px;
         margin: 0 auto;
     }
 
+    .details-poster {
+        width: 100%;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    }
+
     .details-info h2 {
-        font-size: 1.75rem;
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
     }
 
     .release-year {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
+        color: #ccc;
     }
 
     .details-meta {
         justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        gap: var(--spacing-xs);
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
     }
 
-    .details-actions {
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .btn-action {
-        justify-content: center;
+    .meta-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.85rem;
     }
 
     .details-tagline {
         font-size: 1rem;
+        margin-bottom: 1rem;
+        color: #ffd700;
+    }
+
+    .details-actions {
+        flex-direction: column;
+        gap: 0.75rem;
+        margin-top: 1.5rem;
+    }
+
+    .btn-action {
+        width: 100%;
+        justify-content: center;
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    .details-overview {
+        margin: 1.5rem 0;
+    }
+
+    .details-overview h3 {
+        font-size: 1.25rem;
+        margin-bottom: 0.75rem;
+    }
+
+    .details-overview p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        color: #ddd;
+    }
+
+    .details-key-facts {
+        margin: 1.5rem 0;
+    }
+
+    .facts-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .fact-item {
+        padding: 0.75rem;
+        background: var(--bg-card);
+        border-radius: 8px;
+    }
+
+    .ratings-comparison {
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+    }
+
+    .ratings-grid {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .rating-item {
+        padding: 0.75rem;
+    }
+
+    .rating-value {
+        font-size: 1.25rem;
+    }
+
+    .cast-section {
+        margin: 1.5rem 0;
     }
 
     .cast-grid {
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: var(--spacing-sm);
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+    }
+
+    .cast-photo {
+        width: 80px;
+        height: 80px;
+        margin: 0 auto 0.5rem;
     }
 
     .cast-name {
@@ -192,27 +276,21 @@
         font-size: 0.75rem;
     }
 
+    .trailer-section {
+        margin: 1.5rem 0;
+    }
+
+    .recommendations-section {
+        margin: 2rem 0;
+    }
+
     .recommendations-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: var(--spacing-sm);
+        gap: 1rem;
     }
 
     .recommendation-info h4 {
         font-size: 0.85rem;
-    }
-
-    .ratings-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
-    }
-
-    .rating-value {
-        font-size: 1.25rem;
-    }
-
-    .facts-grid {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-sm);
     }
 
     .modal-content {
