@@ -119,7 +119,7 @@ function setupModalEvents() {
                     const movie = data.results[randomIndex];
 
                     randomResult.innerHTML = `
-                        <div class="random-movie-result" onclick="window.location.href='pages/details.html?id=${movie.id}'">
+                        <div class="random-movie-result" onclick="window.location.href='./pages/details.html?id=${movie.id}'">
                             <img src="${API.getImageUrl(movie.poster_path, 'w185') || '../images/no-poster.jpg'}" 
                                  alt="${movie.title}">
                             <div class="random-movie-info">
