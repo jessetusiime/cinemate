@@ -2,7 +2,7 @@ import { createHeader, createFooter, updateBadges, updateFooterStats } from './c
 import API from './api.mjs';
 import UI from './ui.mjs';
 import Storage from './storage.mjs';
-import { setupMovieCardEvents, setupSearchEvents, setupFilterEvents } from './events.mjs';
+import { setupMovieCardEvents, setupSearchEvents, setupFilterEvents,setupRandomMovieButton } from './events.mjs';
 
 let currentPage = 1;
 let totalPages = 1;
@@ -43,6 +43,7 @@ async function initApp() {
     // Setup events
     setupMovieCardEvents();
     setupSearchEvents();
+    setupRandomMovieButton();
 
     // Load page-specific content
     await loadPageContent();

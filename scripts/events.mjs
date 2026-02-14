@@ -29,66 +29,95 @@ export function setupMovieCardEvents() {
 
 export function setupRandomMovieButton() {
     const randomBtn = document.getElementById('randomMovieBtn');
+
+    if (!randomBtn) {
+        console.log('Random button not found');
+        return;
+    }
+
+    console.log('Setting up random button');
+
+    const newBtn = randomBtn.cloneNode(true);
+    randomBtn.parentNode.replaceChild(newBtn, randomBtn);
+
+    newBtn.addEventListener('click', async function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('Random button clicked');
+
+        const modal = document.getElementById('randomModal');
+        const randomGenre = document.getElementById('randomGenre');
+
+        if (!modal) {
+            console.error('Modal not found');
+            return;
+        }
+
+        if (randomGenre && randomGenre.children.length <= 1) {
+            try {
+                await UI.populateGenres(randomGenre);
+            } catch (error) {
+                console.error('Failed to load genres:', error);
+            }
+        }
+
+        modal.classList.remove('hidden');
+    });
+
+    setupModalEvents();
+}
+
+function setupModalEvents() {
     const modal = document.getElementById('randomModal');
     const closeBtn = document.querySelector('.modal-close');
     const getRandomBtn = document.getElementById('getRandomMovie');
-    const randomGenre = document.getElementById('randomGenre');
-    const randomRating = document.getElementById('randomRating');
-    const randomResult = document.getElementById('randomMovieResult');
-    
-    if (!randomBtn) return;
-    
-    // Open modal
-    randomBtn.addEventListener('click', async () => {
-        // Populate genres if not already populated
-        if (randomGenre && randomGenre.children.length <= 1) {
-            await UI.populateGenres(randomGenre);
-        }
-        
-        if (modal) modal.classList.remove('hidden');
-    });
-    
-    // Close modal
+
+    if (!modal) return;
+
     if (closeBtn) {
         closeBtn.addEventListener('click', () => {
             modal.classList.add('hidden');
+            const randomResult = document.getElementById('randomMovieResult');
             if (randomResult) randomResult.classList.add('hidden');
         });
     }
-    
-    // Close modal when clicking outside
-    if (modal) {
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.classList.add('hidden');
-                if (randomResult) randomResult.classList.add('hidden');
-            }
-        });
-    }
-    
-    // Get random movie
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+            modal.classList.add('hidden');
+            const randomResult = document.getElementById('randomMovieResult');
+            if (randomResult) randomResult.classList.add('hidden');
+        }
+    });
+
     if (getRandomBtn) {
-        getRandomBtn.addEventListener('click', async () => {
+        const newGetBtn = getRandomBtn.cloneNode(true);
+        getRandomBtn.parentNode.replaceChild(newGetBtn, getRandomBtn);
+
+        newGetBtn.addEventListener('click', async () => {
+            const randomGenre = document.getElementById('randomGenre');
+            const randomRating = document.getElementById('randomRating');
+            const randomResult = document.getElementById('randomMovieResult');
+
             const genre = randomGenre?.value || '';
             const minRating = randomRating?.value || '0';
-            
-            getRandomBtn.disabled = true;
-            getRandomBtn.textContent = 'Finding...';
-            
+
+            newGetBtn.disabled = true;
+            newGetBtn.textContent = 'Finding...';
+
             try {
                 const filters = {
                     sort: 'popularity.desc',
                     minRating: minRating
                 };
                 if (genre) filters.genre = genre;
-                
-                // Get a random page
+
                 const data = await API.discoverMovies(filters, Math.floor(Math.random() * 10) + 1);
-                
-                if (data.results && data.results.length > 0) {
+
+                if (data.results && data.results.length > 0 && randomResult) {
                     const randomIndex = Math.floor(Math.random() * data.results.length);
                     const movie = data.results[randomIndex];
-                    
+
                     randomResult.innerHTML = `
                         <div class="random-movie-result" onclick="window.location.href='pages/details.html?id=${movie.id}'">
                             <img src="${API.getImageUrl(movie.poster_path, 'w185') || '../images/no-poster.jpg'}" 
@@ -102,17 +131,19 @@ export function setupRandomMovieButton() {
                         </div>
                     `;
                     randomResult.classList.remove('hidden');
-                } else {
+                } else if (randomResult) {
                     randomResult.innerHTML = '<p class="error">No movies found. Try different filters.</p>';
                     randomResult.classList.remove('hidden');
                 }
             } catch (error) {
                 console.error('Random movie error:', error);
-                randomResult.innerHTML = '<p class="error">Failed to get random movie. Try again.</p>';
-                randomResult.classList.remove('hidden');
+                if (randomResult) {
+                    randomResult.innerHTML = '<p class="error">Failed to get random movie. Try again.</p>';
+                    randomResult.classList.remove('hidden');
+                }
             } finally {
-                getRandomBtn.disabled = false;
-                getRandomBtn.textContent = 'Get Random Movie';
+                newGetBtn.disabled = false;
+                newGetBtn.textContent = 'Get Random Movie';
             }
         });
     }
